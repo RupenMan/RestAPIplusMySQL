@@ -67,17 +67,15 @@ public class EmployeeDao {
 		return emp;
 	}
 	
-	public Employee delete(Employee emp) {
+	public void delete(int id) {
 		String query = "DELETE FROM employee WHERE id=?";
 		Connection conn = DatabaseConnection.getDBConnection();
 		try {
 			PreparedStatement pStmt = conn.prepareStatement(query);
-			pStmt.setInt(1, emp.getId());
+			pStmt.setInt(1, id);
 			pStmt.executeUpdate();
 		}catch(SQLException ex) {
-			
 		}
-		return emp;
 	}
 	
 	public Employee findById(int id) {

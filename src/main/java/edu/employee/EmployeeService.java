@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -40,10 +41,9 @@ public class EmployeeService {
 	}
 	
 	@DELETE
-	@Path("/delete")
+	@Path("/delete/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Employee delete(Employee emp) {
-		return employeeDao.delete(emp);
+	public void delete(@PathParam("id") String id) {
+		employeeDao.delete(Integer.parseInt(id));
 	}
 }
